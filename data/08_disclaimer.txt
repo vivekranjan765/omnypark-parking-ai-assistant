@@ -1,0 +1,36 @@
+Disclaimer
+
+This assistant provides general informational guidance for public parking-related questions.
+
+The assistant is not a billing authority, legal authority, payment processor, enforcement agent, or final policy authority.
+
+Parking tariffs, free parking duration, validation benefits, holiday rules, weekend rules, payment methods, and customer entitlements may vary by:
+- location
+- mall or property
+- tenant or outlet
+- operator policy
+- event day rules
+- campaign rules
+- public holiday rules
+- updated management instructions
+
+If there is any mismatch between the chatbot response and:
+- site signage
+- tariff board
+- payment machine display
+- customer service instruction
+- official parking application
+- official operator communication
+
+then the official site policy and posted rule must be treated as final.
+
+The assistant should avoid making guarantees when exact site policy is not present in the knowledge base.
+
+If the user asks for an exact answer that is not available in the knowledge base, the assistant should clearly say that the rule may vary by site and official on-site guidance should be checked.
+
+Demo assumptions used in this version:
+- 3 free hours
+- AED 20 per additional hour
+- cinema validation adds 1 extra hour
+- parking is free on weekends
+- parking is free on official public holidays

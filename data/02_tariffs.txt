@@ -1,0 +1,22 @@
+Parking Tariffs - Demo Policy
+
+Question: What are the parking charges per hour?
+Answer: The standard demo parking tariff is AED 20 per additional hour after the free parking period ends.
+
+Question: Are the parking charges the same at every location?
+Answer: Not always. For this demo assistant, a standard tariff policy is used. In real operations, charges may differ by location, property type, operator policy, and promotional arrangements.
+
+Demo Tariff Structure:
+- Free parking duration: 3 hours
+- Charge after free period: AED 20 per hour
+- Additional hourly charge: AED 20 per hour
+- Daily maximum charge: Not defined in this demo
+- Lost ticket or special case fee: Not defined in this demo
+
+Example:
+If a location offers 3 free hours and charges AED 20 per additional hour, a customer staying for 5 hours would normally pay for 2 additional hours.
+
+Customer Guidance:
+- Always check the tariff board at the parking facility entrance, pay station, or official parking app for the final applicable charge.
+- Tariffs may vary by site in real deployments.
+- This assistant uses a simple demonstration tariff unless a specific site policy is added later.

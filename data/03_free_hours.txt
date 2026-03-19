@@ -1,0 +1,17 @@
+Free Parking Duration - Demo Policy
+
+Question: How many free parking hours are available?
+Answer: The standard free parking duration in this demo is 3 hours.
+
+Question: Does everyone get free parking?
+Answer: In this demo, the assistant assumes public visitors receive 3 hours of free parking unless a specific site rule overrides it.
+
+Question: When does paid parking start?
+Answer: Paid parking starts after the 3-hour free parking period ends, unless the user receives a valid extension or validation from an authorized outlet or service point.
+
+Question: Can the free parking duration change on weekends, holidays, or special events?
+Answer: Yes. In real operations, free parking duration may change based on weekend policy, public holiday policy, promotional campaigns, or site-specific rules.
+
+Guidance for the Assistant:
+- Use 3 hours as the default free parking duration for this demo.
+- If site-specific data is added later, the assistant should use the site-specific rule instead of the demo rule.

@@ -1,0 +1,20 @@
+OmnyPark Public Parking Assistant - Overview
+
+This assistant provides general public guidance related to parking at OmnyPark-managed or OmnyPark-supported parking locations in Dubai and the UAE.
+
+OmnyPark provides parking management solutions for locations such as malls, commercial complexes, corporate parks, pay-and-park facilities, and residential complexes.
+
+CASS Parking provides parking-related systems and technologies including parking management systems, payment options, parking guidance systems, smartphone applications, RFID-based access control, and ANPR-based access control.
+
+This chatbot is designed for public users who want quick answers to common parking questions such as:
+- parking charges per hour
+- free parking duration
+- cinema or outlet validation rules
+- weekend and public holiday parking rules
+- payment guidance
+- general customer parking FAQs
+
+This assistant is intended to provide general informational guidance only.
+Actual parking rules may vary by location, mall, outlet, property owner, event, campaign, public holiday notification, or parking operator policy.
+
+If there is any difference between the chatbot answer and the actual site signage or official operator policy, the site signage and official policy should be treated as final.

@@ -1,0 +1,23 @@
+Weekend and Public Holiday Parking Policy - Demo Policy
+
+Question: Is parking free on weekends?
+Answer: In this demo, parking is free on weekends.
+
+Question: Is parking free on public holidays?
+Answer: In this demo, parking is also free on official public holidays.
+
+Question: Are weekends and public holidays treated the same?
+Answer: In this demo, yes. Weekend and official public holiday parking are both treated as free parking periods.
+
+Demo Policy:
+- Weekend policy: Free parking
+- Public holiday policy: Free parking
+- Special event policy: Site-specific and not defined in this demo
+
+Question: How can a customer confirm whether parking is free today?
+Answer: The customer should check the official parking signage, pay station notice, site announcement, mobile application, or operator notice for the final rule applicable on that day.
+
+Assistant Guidance:
+- Answer weekends as free in this demo.
+- Answer official public holidays as free in this demo.
+- If a future site-specific policy is added, that policy should override the demo rule.

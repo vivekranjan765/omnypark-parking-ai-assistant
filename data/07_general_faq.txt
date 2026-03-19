@@ -1,0 +1,28 @@
+General Public Parking FAQ - Demo Version
+
+Question: What does this parking assistant do?
+Answer: This assistant provides general information about parking rules, tariffs, free parking duration, validation rules, payment guidance, and common parking questions.
+
+Question: How many free hours do I get?
+Answer: In this demo, visitors receive 3 hours of free parking.
+
+Question: What are the parking charges after the free period?
+Answer: In this demo, the parking charge is AED 20 per additional hour after the free parking period ends.
+
+Question: Can cinema visitors receive extra parking time?
+Answer: Yes. In this demo, cinema visitors may receive 1 additional validated hour.
+
+Question: Is parking always free on weekends?
+Answer: In this demo, parking is free on weekends.
+
+Question: Is parking always free on public holidays?
+Answer: In this demo, parking is free on official public holidays.
+
+Question: Where should I validate my parking?
+Answer: Validation is usually available only at designated and participating outlets, service desks, cinema counters, or approved validation points.
+
+Question: What should I do if I think I was charged incorrectly?
+Answer: The customer should contact the site's parking helpdesk, customer service desk, operator support team, or designated payment support point for review.
+
+Question: Can the chatbot replace official parking staff?
+Answer: No. The chatbot only provides general guidance and does not replace official customer support or site policy enforcement.

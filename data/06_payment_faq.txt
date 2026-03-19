@@ -1,0 +1,30 @@
+Parking Payment FAQ - Demo Guidance
+
+Question: How can I pay for parking?
+Answer: Parking payment may be made through one or more supported channels depending on the location, such as:
+- automated pay station
+- payment kiosk
+- cashier desk
+- mobile application
+- online parking portal
+- validated merchant process
+
+Question: What payment methods may be accepted?
+Answer: Payment methods may vary by site and may include:
+- cash
+- credit card
+- debit card
+- mobile wallet
+- in-app payment
+
+Question: When should I pay for parking?
+Answer: Payment timing depends on the parking system used at the location. In most cases, the user should complete payment before exit if the stay exceeds the free parking duration.
+
+Question: What if my payment fails?
+Answer: If payment fails, the customer should retry using another supported method or contact the site's customer support desk, help point, or parking operator for assistance.
+
+Question: What if I already validated my parking?
+Answer: If the validation is successful and correctly applied, the payable parking duration should be adjusted according to the site's policy. If the user still sees a charge, they should contact the support point before leaving.
+
+Question: Can I pay through a mobile app?
+Answer: Some parking systems support smartphone applications and digital parking services, but app-based payment availability depends on the specific site configuration.

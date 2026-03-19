@@ -1,0 +1,31 @@
+Validation Rules - Demo Policy
+
+Question: What is parking validation?
+Answer: Parking validation is a process where a participating outlet, cinema, merchant, or service desk extends or adjusts the parking entitlement of a customer according to the site's parking policy.
+
+Question: Where can parking be validated?
+Answer: In this demo, parking may be validated at designated participating outlets, cinema counters, or customer service desks, depending on the site's operating policy.
+
+Question: Can cinema visitors get extra parking time?
+Answer: Yes. In this demo, cinema visitors may receive 1 additional validated hour beyond the standard free parking duration.
+
+Demo Validation Assumption:
+- Standard free parking duration: 3 hours
+- Additional cinema validation duration: 1 hour
+- Total entitlement after cinema validation: 4 hours
+
+Question: Is validation automatic?
+Answer: Validation may be automatic or manual depending on the parking system design and location policy. In many cases, the user must complete validation at an approved point before exit.
+
+Question: Can every store validate parking?
+Answer: No. Only participating or authorized outlets can provide validation, and only according to the site's configured rules.
+
+Question: Can validation be used after payment?
+Answer: This depends on the site policy. In this demo, users are advised to validate before making payment or before exiting.
+
+Question: Does validation policy differ by outlet?
+Answer: Yes. In real deployments, validation benefits may vary by outlet, cinema, merchant category, spending threshold, or tenant-specific agreement.
+
+Assistant Guidance:
+- For this demo, use the cinema rule of 1 extra hour.
+- Do not guarantee that every outlet provides validation.
