@@ -45,15 +45,17 @@ class VectorDB:
 
         print(f"Vector database initialized with collection: {self.collection_name}")
 
-    def chunk_text(self, text: str, chunk_size: int = 500) -> List[str]:
+    def chunk_text(self, text: str, chunk_size: int = 500, chunk_overlap: int = 50) -> List[str]:
+    
         chunks = []
         start = 0
+        text_length = len(text)
 
-        while start < len(text):
+        while start < text_length:
             end = start + chunk_size
             chunk = text[start:end]
             chunks.append(chunk)
-            start = end
+            start += chunk_size - chunk_overlap
 
         return chunks
         
@@ -92,6 +94,7 @@ class VectorDB:
         print(f"Added {len(all_chunks)} chunks to vector database")
 
     def search(self, query: str, n_results: int = 5) -> Dict[str, Any]:
+        query = query.lower().strip()
         query_embedding = self.embedding_model.encode([query]).tolist()
 
         results = self.collection.query(

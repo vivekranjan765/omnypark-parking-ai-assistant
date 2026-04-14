@@ -1,245 +1,148 @@
-# OmnyPark Public Parking Assistant
-
-A prototype RAG-based public parking chatbot created for our partner company **OmnyPark** to demonstrate how an AI assistant can help end users quickly understand parking charges, free parking hours, validation benefits, and weekend/public holiday parking policies.
+# OmnyPark AI Parking Assistant (RAG-based Chatbot Prototype)
 
 ## Overview
 
-This project is a domain-specific AI chatbot built using a **Retrieval-Augmented Generation (RAG)** approach.
+The OmnyPark AI Parking Assistant is a domain-specific chatbot prototype developed to demonstrate how Artificial Intelligence can improve the public parking experience. This assistant leverages a Retrieval-Augmented Generation (RAG) architecture to provide accurate, context-aware responses to user queries related to parking policies.
 
-The assistant is designed for public users who may have questions such as:
+The solution showcases how users can quickly understand parking tariffs, free hours, validation rules, and weekend or public holiday policies through natural language interaction.
 
-- What are the parking charges per hour?
-- How many free parking hours are available?
-- Can cinema visitors get extra parking time?
-- Is parking free on weekends or public holidays?
-- Where can parking be validated?
+Unlike generic chatbots, this assistant relies on a structured knowledge base and retrieval pipeline to ensure that responses remain grounded, consistent, and reliable.
 
-The current version is a **prototype** built to demonstrate the concept for OmnyPark using a curated text-based knowledge base and a lightweight RAG pipeline.
+---
 
 ## Problem Statement
 
-Parking policies are often confusing for users because details such as free hours, validation rules, and holiday exceptions may vary by site.
+Parking policies are often difficult for users to interpret due to fragmented information across signage, ticketing systems, and websites. Users frequently struggle to understand:
 
-This prototype was created to show how a public-facing AI assistant can:
+- How long parking is free
+- What charges apply after free hours
+- Whether validations extend parking time
+- If parking rules differ on weekends or public holidays
 
-- provide quick answers to common parking questions
-- reduce dependency on manual helpdesk interaction
-- improve customer experience
-- serve as a foundation for future web, kiosk, or mobile deployment
+This project demonstrates how an AI assistant can simplify these interactions by delivering instant, easy-to-understand answers.
 
-## Prototype Scope
+---
 
-The current prototype covers:
+## Solution Approach
 
-- parking charges
+This project implements a **Retrieval-Augmented Generation (RAG)** pipeline, combining document retrieval with large language model reasoning.
+
+The workflow consists of the following steps:
+
+1. Parking policy documents are stored as structured text files
+2. Documents are split into smaller chunks for efficient processing
+3. Each chunk is converted into embeddings using a Sentence Transformers model
+4. Embeddings are stored in a ChromaDB vector database
+5. When a user submits a query, relevant chunks are retrieved using similarity search
+6. Google Gemini generates a response based only on the retrieved context
+
+This architecture significantly reduces hallucinations and ensures that answers remain grounded in the provided knowledge base.
+
+---
+
+## Chunking Strategy
+
+To preserve contextual continuity and improve retrieval quality, documents are split using an overlapping chunking strategy.
+
+- **Chunk Size:** 500 characters  
+- **Chunk Overlap:** 50 characters  
+
+The overlap ensures that important information spanning across chunk boundaries is retained, allowing the retrieval system to capture complete context and improve answer accuracy.
+
+---
+
+## Dataset Description and Maintenance
+
+The dataset consists of structured text files stored in the `data/` directory. Each file represents a specific aspect of parking policy, including:
+
+- tariffs and pricing rules
 - free parking duration
-- cinema validation rules
-- weekend parking rules
-- public holiday parking rules
-- basic parking payment and FAQ guidance
+- validation policies
+- weekend and public holiday rules
+- frequently asked questions
 
-The knowledge base is stored as structured text files inside the `data/` folder.
+The dataset is designed to be modular and easily maintainable. Updates can be made by modifying or adding text files without changing the core system logic. This makes the system scalable and adaptable for real-world deployments across multiple locations.
 
-## Technical Approach
+Dataset reference:
+https://github.com/vivekranjan765/omnypark-parking-ai-assistant/tree/main/data
 
-This project uses a simple RAG architecture:
+---
 
-1. Text documents are stored in the `data/` folder
-2. Documents are loaded and chunked
-3. Chunks are embedded using a Sentence Transformers model
-4. Embeddings are stored in ChromaDB
-5. Relevant chunks are retrieved for each user question
-6. Gemini generates the final answer using only the retrieved context
+## Project Scope
 
-## Project Structure
+This assistant is designed to handle a clearly defined set of parking-related queries, including:
 
-```text
-PARKING_AI_ASSISTANT/
-├── data/
-│   ├── 01_overview.txt
-│   ├── 02_tariffs.txt
-│   ├── 03_free_hours.txt
-│   ├── 04_validation_rules.txt
-│   ├── 05_weekend_and_holiday_policy.txt
-│   ├── 06_payment_faq.txt
-│   ├── 07_general_faq.txt
-│   └── 08_disclaimer.txt
-│
-├── src/
-│   ├── app.py
-│   ├── vectordb.py
-│   └── ui.py
-│
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── README.md
-└── requirements.txt
+- parking charges and tariffs  
+- free parking duration  
+- cinema or retail validation rules  
+- weekend parking policies  
+- public holiday parking policies  
+- general parking FAQs  
 
+The current prototype does **not** support:
 
+- real-time parking availability  
+- live payment processing  
+- integration with external parking systems  
+- location-based dynamic pricing  
 
+This scope definition ensures clarity of use and aligns the system with its intended purpose as a policy assistant.
 
+---
 
-Local Setup Instructions
-1. Clone the repository
-git clone <your-github-repo-url>
-cd PARKING_AI_ASSISTANT
-2. Create and activate a virtual environment
-python -m venv .venv
+## Architecture Overview
 
-On Windows:
+The system is composed of the following components:
 
-.venv\Scripts\activate
-3. Install dependencies
-pip install -r requirements.txt
-pip install streamlit
-4. Configure environment variables
+- **Knowledge Base:** Structured text files (`data/`)  
+- **Embedding Model:** Sentence Transformers (MiniLM)  
+- **Vector Store:** ChromaDB  
+- **Language Model:** Google Gemini  
+- **Interface:** Streamlit-based UI  
 
-Create a .env file in the project root by copying .env.example.
+---
 
-Example:
+## Features
 
-copy .env.example .env
+- Natural language query handling for parking policies  
+- Context-aware responses using retrieval-based generation  
+- Lightweight and modular architecture  
+- Secure API key management using environment variables  
+- Easy local deployment for testing and evaluation  
 
-Then update the values inside .env with your own API key.
+---
 
-5. Run the terminal version
-python src/app.py
-6. Run the Streamlit UI
-streamlit run src/ui.py
-Environment Variables
+## Sample Questions
 
-This project uses environment variables for secure configuration.
+Users can interact with the assistant using queries such as:
 
-Create a .env file in the project root and define the required values.
+- What are the parking charges per hour?  
+- How many free hours do I get?  
+- Can cinema visitors get extra parking time?  
+- Is parking free on weekends?  
+- Is parking free on public holidays?  
+- Where can I validate my parking?  
 
-Required variables:
+---
 
-GOOGLE_API_KEY
+## Expected Output
 
-GOOGLE_MODEL
-
-EMBEDDING_MODEL
-
-CHROMA_COLLECTION_NAME
-
-A sample template is provided in .env.example.
-
-Security Note
-
-API keys and other sensitive information are not stored in the repository.
-
-To follow secure development practices:
-
-keep your real API key only in .env
-
-do not commit .env to GitHub
-
-use .env.example to show the required variables without exposing real values
-
-Sample Inputs
-
-Try asking:
-
-What are the parking charges per hour?
-
-How many free hours do I get?
-
-Can cinema visitors get extra parking time?
-
-Is parking free on weekends?
-
-Is parking free on public holidays?
-
-Where can I validate my parking?
-
-Expected Output Style
-
-The assistant should return short, clear, public-friendly answers based only on the project knowledge base.
+The assistant generates concise and user-friendly responses based strictly on the knowledge base.
 
 Example:
 
-Question:
+**Question:**  
 What are the parking charges per hour?
 
-Expected Answer Style:
+**Answer:**  
+First 3 hours are free. After the free period, parking is charged at AED 20 per hour. Official site signage remains final.
 
-First 3 hours: Free
+---
 
-After free time: AED 20 per additional hour
+## Local Setup Instructions
 
-Official site signage and operator policy remain final
+### 1. Clone the repository
 
-Demo Policy Used in This Prototype
-
-To keep the prototype simple and consistent, the current knowledge base uses a demo policy:
-
-First 3 hours: Free
-
-After free time: AED 20 per additional hour
-
-Cinema visitors: 1 extra validated hour
-
-Weekends: Free
-
-Official public holidays: Free
-
-Reproducibility
-
-This project is designed to be reproducible and runnable locally by evaluators.
-
-To reproduce:
-
-clone the repo
-
-create a Python virtual environment
-
-install dependencies
-
-create .env from .env.example
-
-add a valid Gemini API key
-
-run the terminal app or Streamlit UI
-
-Limitations
-
-This is a prototype and has the following limitations:
-
-it uses a text-based demo knowledge base rather than live operational APIs
-
-policies in real deployments may vary by location
-
-it does not connect to live parking systems, mobile apps, or payment gateways
-
-it does not yet support multilingual responses
-
-it should not replace official site signage or operator policy
-
-Future Improvements
-
-Possible next steps include:
-
-location-specific parking knowledge bases
-
-multilingual support such as English and Arabic
-
-integration with live tariff and validation APIs
-
-deployment as a public web widget or mobile assistant
-
-source attribution for retrieved answers
-
-session memory and chat history enhancements
-
-Disclaimer
-
-This assistant is a prototype created for demonstration purposes for our partner company OmnyPark.
-
-Answers are generated from the provided knowledge base and are intended for general informational use only. Official on-site signage, tariff boards, and operator policy remain final.
-
-Acknowledgment
-
-This prototype was developed using the Ready Tensor AAIDC project template and adapted into a public-facing parking assistant use case for OmnyPark.
-
-
+```bash
+git clone https://github.com/vivekranjan765/omnypark-parking-ai-assistant
+cd omnypark-parking-ai-assistant
