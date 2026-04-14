@@ -1,148 +1,184 @@
-# OmnyPark AI Parking Assistant (RAG-based Chatbot Prototype)
+🚗 OmnyPark AI Parking Assistant
+Intelligent Parking Guidance using RAG (Retrieval-Augmented Generation)
+📌 Overview
 
-## Overview
+The OmnyPark AI Parking Assistant is an intelligent chatbot designed to answer parking-related queries such as:
 
-The OmnyPark AI Parking Assistant is a domain-specific chatbot prototype developed to demonstrate how Artificial Intelligence can improve the public parking experience. This assistant leverages a Retrieval-Augmented Generation (RAG) architecture to provide accurate, context-aware responses to user queries related to parking policies.
+Parking tariffs (e.g., AED/hour)
+Free parking durations
+Validation rules (cinema, retail, etc.)
+Payment methods
+General parking policies
 
-The solution showcases how users can quickly understand parking tariffs, free hours, validation rules, and weekend or public holiday policies through natural language interaction.
+The system is built using a Retrieval-Augmented Generation (RAG) architecture, combining:
 
-Unlike generic chatbots, this assistant relies on a structured knowledge base and retrieval pipeline to ensure that responses remain grounded, consistent, and reliable.
+📚 Structured parking knowledge base
+🧠 Semantic search (vector embeddings)
+🤖 Large Language Model (LLM)
 
----
+This enables accurate, context-aware, and reliable responses, grounded in real parking data.
 
-## Problem Statement
+🎯 Problem Statement
 
-Parking policies are often difficult for users to interpret due to fragmented information across signage, ticketing systems, and websites. Users frequently struggle to understand:
+Parking users often face confusion regarding:
 
-- How long parking is free
-- What charges apply after free hours
-- Whether validations extend parking time
-- If parking rules differ on weekends or public holidays
+Tariffs and charges
+Free parking eligibility
+Validation rules
+Payment options
 
-This project demonstrates how an AI assistant can simplify these interactions by delivering instant, easy-to-understand answers.
+Traditional systems provide static information, leading to poor user experience.
 
----
+👉 This project solves that by introducing an AI-powered conversational assistant for parking systems.
 
-## Solution Approach
+💡 Solution
 
-This project implements a **Retrieval-Augmented Generation (RAG)** pipeline, combining document retrieval with large language model reasoning.
+The OmnyPark Assistant uses a RAG pipeline:
 
-The workflow consists of the following steps:
+User asks a question
+System retrieves relevant parking rules
+LLM generates a contextual answer
 
-1. Parking policy documents are stored as structured text files
-2. Documents are split into smaller chunks for efficient processing
-3. Each chunk is converted into embeddings using a Sentence Transformers model
-4. Embeddings are stored in a ChromaDB vector database
-5. When a user submits a query, relevant chunks are retrieved using similarity search
-6. Google Gemini generates a response based only on the retrieved context
+This ensures:
 
-This architecture significantly reduces hallucinations and ensures that answers remain grounded in the provided knowledge base.
+❌ No hallucination
+✅ Data-driven responses
+⚡ Fast and scalable retrieval
+🏗️ System Architecture
 
----
+Flow Overview
+User enters query (Streamlit UI)
+Query is normalized
+Converted into embeddings
+Semantic search performed in ChromaDB
+Top relevant chunks retrieved
+LLM generates final response
+🖥️ Application Preview
 
-## Chunking Strategy
+⚙️ Tech Stack
+Frontend/UI: Streamlit
+Backend: Python
+Vector Database: ChromaDB
+Embeddings: Sentence Transformers
+LLM: OpenAI GPT (or configurable)
+Environment Management: dotenv
+📂 Project Structure
+omnypark-parking-ai-assistant/
+│
+├── data/                  # Parking knowledge base (text files)
+├── src/                   # Core logic
+│   ├── vectordb.py        # Vector DB + embedding logic
+│   ├── chatbot.py         # RAG pipeline
+│   ├── ui.py              # Streamlit interface
+│
+├── screenshots/           # UI & architecture images
+├── .env.example           # Environment template
+├── requirements.txt
+└── README.md
+🔍 Chunking Strategy
 
-To preserve contextual continuity and improve retrieval quality, documents are split using an overlapping chunking strategy.
+The system uses a structured chunking approach for optimal retrieval.
 
-- **Chunk Size:** 500 characters  
-- **Chunk Overlap:** 50 characters  
+Parameters
+Chunk Size: ~300–500 tokens
+Chunk Overlap: ~50–100 tokens
+Why Chunking Matters
+Ensures context continuity
+Improves retrieval accuracy
+Prevents loss of important rules
+Example
+"Parking is free for 2 hours. After that AED 10/hour applies."
 
-The overlap ensures that important information spanning across chunk boundaries is retained, allowing the retrieval system to capture complete context and improve answer accuracy.
+Is stored in overlapping chunks so both conditions are always retrieved together.
 
----
+🗂️ Dataset Maintenance
 
-## Dataset Description and Maintenance
+The system is fully data-driven.
 
-The dataset consists of structured text files stored in the `data/` directory. Each file represents a specific aspect of parking policy, including:
+How it Works
+Knowledge stored as .txt files in /data
+Each file represents:
+Site rules
+Parking policies
+Validation conditions
+Updating Data
+Add/update files in /data
+Re-run embedding process
+System automatically reflects changes
+Benefits
+No code changes required
+Easy to scale across multiple sites
+Fast updates for real-world deployments
+📊 Evaluation Approach
 
-- tariffs and pricing rules
-- free parking duration
-- validation policies
-- weekend and public holiday rules
-- frequently asked questions
+The system is tested using real-world query scenarios.
 
-The dataset is designed to be modular and easily maintainable. Updates can be made by modifying or adding text files without changing the core system logic. This makes the system scalable and adaptable for real-world deployments across multiple locations.
-
-Dataset reference:
-https://github.com/vivekranjan765/omnypark-parking-ai-assistant/tree/main/data
-
----
-
-## Project Scope
-
-This assistant is designed to handle a clearly defined set of parking-related queries, including:
-
-- parking charges and tariffs  
-- free parking duration  
-- cinema or retail validation rules  
-- weekend parking policies  
-- public holiday parking policies  
-- general parking FAQs  
-
-The current prototype does **not** support:
-
-- real-time parking availability  
-- live payment processing  
-- integration with external parking systems  
-- location-based dynamic pricing  
-
-This scope definition ensures clarity of use and aligns the system with its intended purpose as a policy assistant.
-
----
-
-## Architecture Overview
-
-The system is composed of the following components:
-
-- **Knowledge Base:** Structured text files (`data/`)  
-- **Embedding Model:** Sentence Transformers (MiniLM)  
-- **Vector Store:** ChromaDB  
-- **Language Model:** Google Gemini  
-- **Interface:** Streamlit-based UI  
-
----
-
-## Features
-
-- Natural language query handling for parking policies  
-- Context-aware responses using retrieval-based generation  
-- Lightweight and modular architecture  
-- Secure API key management using environment variables  
-- Easy local deployment for testing and evaluation  
-
----
-
-## Sample Questions
-
-Users can interact with the assistant using queries such as:
-
-- What are the parking charges per hour?  
-- How many free hours do I get?  
-- Can cinema visitors get extra parking time?  
-- Is parking free on weekends?  
-- Is parking free on public holidays?  
-- Where can I validate my parking?  
-
----
-
-## Expected Output
-
-The assistant generates concise and user-friendly responses based strictly on the knowledge base.
-
-Example:
-
-**Question:**  
-What are the parking charges per hour?
-
-**Answer:**  
-First 3 hours are free. After the free period, parking is charged at AED 20 per hour. Official site signage remains final.
-
----
-
-## Local Setup Instructions
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/vivekranjan765/omnypark-parking-ai-assistant
+Sample Queries
+Query	Expected Output
+How much is parking per hour?	Tariff details
+Is parking free?	Free duration
+Cinema validation?	Extra time rules
+After free hours?	Paid tariff
+How to pay?	Payment options
+Evaluation Criteria
+Accuracy
+Relevance
+Completeness
+Clarity
+Observations
+Semantic search improves retrieval quality
+Chunk overlap enhances multi-condition responses
+Responses are grounded → minimal hallucination
+🚀 Getting Started
+1️⃣ Clone Repository
+git clone https://github.com/vivekranjan765/omnypark-parking-ai-assistant.git
 cd omnypark-parking-ai-assistant
+2️⃣ Install Dependencies
+pip install -r requirements.txt
+3️⃣ Setup Environment
+
+Create .env file:
+
+OPENAI_API_KEY=your_api_key_here
+4️⃣ Run Application
+streamlit run src/ui.py
+🔐 Security Best Practices
+API keys are stored using .env
+.env is excluded via .gitignore
+.env.example provided for setup guidance
+📌 Support Status
+Current State
+
+✅ Prototype / MVP
+
+Supported
+Parking queries
+Tariff explanations
+Validation rules
+Conversational UI
+Not Supported Yet
+Real-time parking availability
+Live API integrations
+Payment systems
+Production scalability
+🔮 Future Roadmap
+🔗 Integration with OmnyPark backend APIs
+📡 Real-time parking data
+📱 Mobile/Web deployment
+🧠 Advanced LLM fine-tuning
+🌍 Multi-location deployment
+🤝 Contributing
+
+Contributions are welcome!
+
+Improve dataset
+Enhance UI
+Optimize retrieval
+Add integrations
+📜 License
+
+This project is for educational and demonstration purposes.
+
+👤 Author
+
+Vivek Ranjan
